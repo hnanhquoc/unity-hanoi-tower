@@ -26,11 +26,6 @@ public class GameController : MonoBehaviour
 
 	void Update () 
 	{
-		if (Input.GetKeyUp(KeyCode.S) && Poles [0].getNumberOfStones () == 3) 
-		{
-			solveTowers(3, Poles[0], Poles[2], Poles[1]);
-		}
-
 		if (steps.Count > 0 && (Poles[0].getNumberOfStones() + Poles[1].getNumberOfStones() + Poles[2].getNumberOfStones()) == 3) {
 			PoleControl[] temp = steps.Dequeue ();
 			temp[0].select ();
@@ -38,6 +33,13 @@ public class GameController : MonoBehaviour
 		}
 
 		updatePosition ();
+	}
+
+	public void triggerAutoPlay(){
+		if (Poles [0].getNumberOfStones () == 3) 
+		{
+			solveTowers(3, Poles[0], Poles[2], Poles[1]);
+		}
 	}
 
 	void updatePosition(){
